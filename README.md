@@ -1,5 +1,5 @@
 # PSC-14
-Tugas Besar Matakulliah Pengantar Sistem Cerdas T.A 2022/2023
+Tugas Besar Matakuliah Pengantar Sistem Cerdas T.A 2022/2023
 
 ## Deskripsi Singkat
 Implementasi Algoritma Genetik untuk menyelesaikan puzzle minesweeper mozaic dengan ukuran 5x5 (Level: Easy)\
