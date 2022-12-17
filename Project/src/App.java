@@ -12,131 +12,6 @@ public class App{
         // j = kolom
         
         //instansiasi array 2 dimensi
-<<<<<<< HEAD
-        int[][] minesweeperBoard = new int[7][7];
-        int[][] minesweeperCheck = new int[7][7];
-        for (int i = 1; i < sizeArray-1; i++) {
-            for (int j = 1; j < sizeArray-1; j++) {
-                //input angka yang ingin di input dimana (i,j) i = baris, j = kolom
-                int num = sc.nextInt();
-                
-                //put num to board
-                minesweeperBoard[i][j] = num;
-                
-                // 0 = tidak, 1 = iya, -1 = bisa jadi
-                minesweeperCheck[i][j]= -1;
-            }
-        }
-        printBoard(minesweeperBoard);
-        // while(true){
-        //     if(checkAll(minesweeperCheck)==true){
-        //         break;
-        //     }
-        //     for (int i = 0; i < sizeArray; i++) {
-        //         for (int j = 0; j < sizeArray; j++) {
-        //             //kalo jumlah kotak di sekitar angkaX == angkaX, kotak diisi string "ya"
-        //             //kalo angkaX == 0, kotak diisi string "tidak"
-        //             if(minesweeperBoard[i][j]==0){
-        //                 minesweeperCheck[i][j]= 0;
-        //                 minesweeperCheck[i+1][j]= 0;
-        //                 minesweeperCheck[i-1][j]= 0;
-        //                 minesweeperCheck[i][j+1]= 0;
-        //                 minesweeperCheck[i][j-1]= 0;
-        //                 minesweeperCheck[i+1][j+1]= 0;
-        //                 minesweeperCheck[i+1][j-1]= 0;
-        //                 minesweeperCheck[i-1][j+1]= 0;
-        //                 minesweeperCheck[i-1][j-1]= 0;
-        //             }else if(minesweeperBoard[i][j]==4 && ((i==0 && (j==0||j==4))||(i==4 && (j==0||j==4)))){
-        //                 minesweeperCheck[i][j]= 0;
-        //                 minesweeperCheck[i+1][j]= 0;
-        //                 minesweeperCheck[i-1][j]= 0;
-        //                 minesweeperCheck[i][j+1]= 0;
-        //                 minesweeperCheck[i][j-1]= 0;
-        //                 minesweeperCheck[i+1][j+1]= 0;
-        //                 minesweeperCheck[i+1][j-1]= 0;
-        //                 minesweeperCheck[i-1][j+1]= 0;
-        //                 minesweeperCheck[i-1][j-1]= 0;
-        //             }else if(minesweeperBoard[i][j]==6 && (i==0||i==4||j==0||j==4)){
-        //                 minesweeperCheck[i][j]= 0;
-        //                 minesweeperCheck[i+1][j]= 0;
-        //                 minesweeperCheck[i-1][j]= 0;
-        //                 minesweeperCheck[i][j+1]= 0;
-        //                 minesweeperCheck[i][j-1]= 0;
-        //                 minesweeperCheck[i+1][j+1]= 0;
-        //                 minesweeperCheck[i+1][j-1]= 0;
-        //                 minesweeperCheck[i-1][j+1]= 0;
-        //                 minesweeperCheck[i-1][j-1]= 0;
-        //             }
-        //             //kalo jumlah kotak "ya" di sekitar angka X == angkaX, kotak lainnya diisi "tidak"
-        //             else if(minesweeperBoard[i][j]>=0){
-        //                 int hitung = 0;
-        //                 if(minesweeperCheck[i][j] == 1){
-        //                     hitung++;
-        //                 }
-        //                 if(minesweeperCheck[i+1][j] == 1){
-        //                     hitung++;
-        //                 }
-        //                 if(minesweeperCheck[i-1][j] == 1){
-        //                     hitung++;
-        //                 }
-        //                 if(minesweeperCheck[i][j+1] == 1){
-        //                     hitung++;
-        //                 }
-        //                 if(minesweeperCheck[i][j-1] == 1){
-        //                     hitung++;
-        //                 }
-        //                 if(minesweeperCheck[i+1][j+1] == 1){
-        //                     hitung++;
-        //                 }
-        //                 if(minesweeperCheck[i+1][j-1] == 1){
-        //                     hitung++;
-        //                 }
-        //                 if(minesweeperCheck[i-1][j+1] == 1){
-        //                     hitung++;
-        //                 }
-        //                 if(minesweeperCheck[i-1][j-1] == 1){
-        //                     hitung++;
-        //                 }
-
-        //                 if(minesweeperBoard[i][j]==hitung){
-        //                     if(minesweeperCheck[i][j] != 1){
-        //                         minesweeperCheck[i][j] = 0;
-        //                     }
-        //                     if(minesweeperCheck[i+1][j] != 1){
-        //                         minesweeperCheck[i+1][j] = 0;
-        //                     }
-        //                     if(minesweeperCheck[i-1][j] != 1){
-        //                         minesweeperCheck[i-1][j] = 0;
-        //                     }
-        //                     if(minesweeperCheck[i][j+1] != 1){
-        //                         minesweeperCheck[i][j+1] = 0;
-        //                     }
-        //                     if(minesweeperCheck[i][j-1] != 1){
-        //                         minesweeperCheck[i][j-1] = 0;
-        //                     }
-        //                     if(minesweeperCheck[i+1][j+1] != 1){
-        //                         minesweeperCheck[i+1][j+1] = 0;
-        //                     }
-        //                     if(minesweeperCheck[i+1][j-1] != 1){
-        //                         minesweeperCheck[i+1][j-1] = 0;
-        //                     }
-        //                     if(minesweeperCheck[i-1][j+1] != 1){
-        //                         minesweeperCheck[i-1][j+1] = 0;
-        //                     }
-        //                     if(minesweeperCheck[i-1][j-1] != 1){
-        //                         minesweeperCheck[i-1][j-1] = 0;
-        //                     }
-        //                 }
-        //             }  
-                    
-        //             //kalo jumlah kotak "tidak" di sekitar angka X == (jumlah kotak di sekitar - angkaX), kotak lainnya diisi "ya"
-        //         }  
-        //     }
-        // }
-        // printBoard2(minesweeperCheck);
-        //
-//        printBoard(minesweeperBoard);
-=======
         int[][] minesweeperBoard = new int[sizeArray+2][sizeArray+2];
         String[][] minesweeperCheck = new String[sizeArray+2][sizeArray+2];
         for (int i = 0; i < minesweeperBoard.length; i++) {
@@ -167,20 +42,13 @@ public class App{
 //        }
     
         
->>>>>>> 3fae62cd2e77f91550c45277dee7983177d3eefa
     }
     
-    public static boolean checkAll(int[][] board){
+    public static boolean checkAll(String[][] board){
         boolean check = true;
-<<<<<<< HEAD
-        for (int i = 0; i < board.length; i++) {
-            for (int j = 0; j < board.length; j++) {
-                if(board[i][j] == -1){
-=======
         for (int i = 1; i < board.length-1; i++) {
             for (int j = 1; j < board.length-1; j++) {
                 if(board[i][j].equals("bisajadi")){
->>>>>>> 3fae62cd2e77f91550c45277dee7983177d3eefa
                     check = false;
                     break;
                 }                
@@ -196,15 +64,9 @@ public class App{
             System.out.println();
         }
     }
-<<<<<<< HEAD
-    public static void printBoard2(int[][] board){
-        for (int i = 0; i < board.length; i++) {
-            for (int j = 0; j < board.length; j++) {
-=======
     public static void printBoard2(String[][] board){
         for (int i = 1; i < board.length-1; i++) {
             for (int j = 1; j < board.length-1; j++) {
->>>>>>> 3fae62cd2e77f91550c45277dee7983177d3eefa
                 System.out.print(board[i][j]+" ");
             }
             System.out.println();
