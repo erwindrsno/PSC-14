@@ -30,7 +30,6 @@ public class App{
                 }
             }
         }
-        printBoard(minesweeperBoard);
         do{
             solve(minesweeperBoard,minesweeperCheck);
 //            printBoard2(minesweeperCheck);            
