@@ -29,7 +29,7 @@ public class FitnessFunction {
             System.out.print(chromosome[i]+" ");
         }
         System.out.println("");
-        System.out.println(res);
+        System.out.println("fitness function: "+res);
     }
     
     public static int[] generateRnd(int size){
@@ -77,8 +77,6 @@ class Ffunction{
         
         for(int i=1; i<size+1; i++){
             for(int j=1; j<size+1; j++){
-                System.out.println("angka: "+countAngka);
-                System.out.println("iya: "+countIya);
                 if(bMatrix[i][j]>-1){
                     countAngka+=bMatrix[i][j];
                     int countAngkaTemp = bMatrix[i][j];
