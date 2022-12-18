@@ -1,7 +1,7 @@
 import java.util.LinkedList;
 import java.util.Random;
 
-class Population implements FitnessFunction {
+class Population implements FitnessFunction, RouletteWheel{
     int populationSize;
     int chromosomeLength;
     // Object[] chromosome;
@@ -68,5 +68,11 @@ class Population implements FitnessFunction {
             // System.out.println(score/(double)chromosome[i].size()*1.0);
             arrScore[i] = (score/(double)chromosome[i].size()*1.0)*100.0;
         }
+    }
+
+    @Override
+    public void selectParents() {
+        // TODO Auto-generated method stub
+        
     }
 }
