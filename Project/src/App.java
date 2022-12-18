@@ -7,6 +7,8 @@ public class App{
         //input panjang array 2 dimensi untuk generate minesweeper
         System.out.println("Input size array");
         int boardSize = sc.nextInt();
+        System.out.println("Input population size");
+        int populationSize = sc.nextInt();
         //generate array berdasarkan size
 
         // i = baris
@@ -17,6 +19,7 @@ public class App{
         String[][] minesweeperCheck = new String[boardSize+2][boardSize+2];
         int[][] answer = new int[boardSize+2][boardSize+2];
 
+        System.out.println("Input board");
         for (int i = 0; i < minesweeperBoard.length; i++) {
             for (int j = 0; j < minesweeperBoard.length; j++) {
                 if(i==0||i==minesweeperBoard.length-1||j==0||j==minesweeperBoard.length-1){
@@ -39,12 +42,13 @@ public class App{
 
         int[] target = solver.convertToArray();
 
-        initializePopulation(10, boardSize, target);
+        initializePopulation(populationSize, boardSize, target);
     }
 
     public static void initializePopulation(int populationSize, int boardSize, int[] target){
-        Population population = new Population(10, (int)Math.pow(boardSize,2), target);
+        Population population = new Population(populationSize, (int)Math.pow(boardSize,2), target);
         population.generateInitialPopulation();
+        population.calculateFitness();
         population.printInfo();
     }
 }
