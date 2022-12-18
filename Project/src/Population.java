@@ -1,7 +1,7 @@
 import java.util.LinkedList;
 import java.util.Random;
 
-class Population {
+class Population implements FitnessFunction {
     int populationSize;
     int chromosomeLength;
     // Object[] chromosome;
@@ -52,6 +52,12 @@ class Population {
             }
             System.out.println();
         }
+    }
+
+    @Override
+    public void calculateFitness() {
+        // TODO Auto-generated method stub
+        
     }
 }
 //how to create array of linkedlist in java?
