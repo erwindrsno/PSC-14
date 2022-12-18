@@ -2,18 +2,42 @@ import java.util.Scanner;
 
 public class App{
     public static void main(String[] args){
-        Scanner sc = new Scanner(System.in);
+//         Scanner sc = new Scanner(System.in);
         
-        //input panjang array 2 dimensi untuk generate minesweeper
-        int sizeArray = sc.nextInt();
-        //generate array berdasarkan size
+//         //input panjang array 2 dimensi untuk generate minesweeper
+//         int sizeArray = sc.nextInt();
+//         //generate array berdasarkan size
 
-        // i = baris
-        // j = kolom
+//         // i = baris
+//         // j = kolom
         
-        //instansiasi array 2 dimensi
-        int[][] minesweeperBoard = new int[sizeArray+2][sizeArray+2];
-        String[][] minesweeperCheck = new String[sizeArray+2][sizeArray+2];
+//         //instansiasi array 2 dimensi
+//         int[][] minesweeperBoard = new int[sizeArray+2][sizeArray+2];
+//         String[][] minesweeperCheck = new String[sizeArray+2][sizeArray+2];
+//         for (int i = 0; i < minesweeperBoard.length; i++) {
+//             for (int j = 0; j < minesweeperBoard.length; j++) {
+//                 if(i==0||i==minesweeperBoard.length-1||j==0||j==minesweeperBoard.length-1){
+//                     minesweeperBoard[i][j] = -1;
+//                     minesweeperCheck[i][j]="bisajadi";
+//                 }else if(i!=0||i!=minesweeperBoard.length-1||j!=0||j!=minesweeperBoard.length-1){
+//                     //input angka yang ingin di input dimana (i,j) i = baris, j = kolom
+//                     int num = sc.nextInt();
+                    
+//                     //put num to board
+//                     minesweeperBoard[i][j] = num;
+
+//                     minesweeperCheck[i][j]="bisajadi";
+//                 }
+//             }
+//         }
+        File file = new File("D:\\angel\\minesweeper.txt");
+        Scanner sc = new Scanner(file);
+        String input = sc.nextLine();
+        String[] arrSplit = input.split(",");
+        int kotak = (int) Math.sqrt(arrSplit.length);
+        int[][] minesweeperBoard = new int[kotak+2][kotak+2];
+        String[][] minesweeperCheck = new String[kotak+2][kotak+2];
+        int index = 0;
         for (int i = 0; i < minesweeperBoard.length; i++) {
             for (int j = 0; j < minesweeperBoard.length; j++) {
                 if(i==0||i==minesweeperBoard.length-1||j==0||j==minesweeperBoard.length-1){
@@ -21,8 +45,9 @@ public class App{
                     minesweeperCheck[i][j]="bisajadi";
                 }else if(i!=0||i!=minesweeperBoard.length-1||j!=0||j!=minesweeperBoard.length-1){
                     //input angka yang ingin di input dimana (i,j) i = baris, j = kolom
-                    int num = sc.nextInt();
-                    
+                    int num = Integer.parseInt(arrSplit[index]);
+                    System.out.println(num);
+                    index++;
                     //put num to board
                     minesweeperBoard[i][j] = num;
 
