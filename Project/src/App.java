@@ -34,12 +34,17 @@ public class App{
         }
 
         //Inisialisasi objek Solver untuk menyelesaikan puzzle tanpa menggunakan algoritma genetik
-        Solver solver = new Solver(minesweeperBoard, minesweeperCheck, answer);
+        Solver solver = new Solver(minesweeperBoard, minesweeperCheck, answer, (int)Math.pow(boardSize,2));
+        solver.begin();
 
-        Thread t1 = new Thread(solver);
-        t1.start();
-        // solver.printBoard();
+        int[] target = solver.convertToArray();
 
-        // Population population = new Population(10, boardSize*boardSize, );
+        initializePopulation(10, boardSize, target);
+    }
+
+    public static void initializePopulation(int populationSize, int boardSize, int[] target){
+        Population population = new Population(10, (int)Math.pow(boardSize,2), target);
+        population.generateInitialPopulation();
+        population.printInfo();
     }
 }

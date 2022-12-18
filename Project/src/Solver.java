@@ -1,23 +1,39 @@
 
-class Solver implements Runnable{
+class Solver{
     int[][] board;
     String[][] check;
     int[][] answer;
+    int[] chromosomeSolution;
+    int length;
 
-    public Solver(int[][] board, String[][] check, int[][] answer){
+    public Solver(int[][] board, String[][] check, int[][] answer, int length){
         this.board = board;
         this.check = check;
         this.answer = answer;
+        this.length = length;
+        this.chromosomeSolution = new int[length];
     }
 
-    public void run(){
+    public void begin(){
         do{
             solve();           
         } while(checkAll() == false);
 
         assign();
-        System.out.println("Solution: ");
+        System.out.println("\nSolution: ");
         printBoard();
+    }
+
+    public int[] convertToArray(){
+        int k = 0;
+
+        for (int i = 1; i < answer.length-1; i++) {
+            for (int j = 1; j < answer.length-1; j++) {
+                chromosomeSolution[k] = answer[i][j];
+                k++;
+            }
+        }
+        return chromosomeSolution;
     }
 
     public boolean checkAll(){
