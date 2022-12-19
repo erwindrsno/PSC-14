@@ -23,6 +23,7 @@ class Population implements FitnessFunction, RouletteWheel{
         this.generation = 1;
         for (int i = 0; i < populationSize; i++) {
             chromosome[i] = new LinkedList<>();
+            child[i] = new LinkedList<>();
         }
     }
 
@@ -38,7 +39,17 @@ class Population implements FitnessFunction, RouletteWheel{
     }
 
     public void generateNewPopulation(){
-        this.chromosome = this.child;
+        // this.chromosome = this.child;
+        // i sampai 20
+        // j sampai 25
+        for (int i = 0; i < populationSize; i++) {
+            for (int j = 0; j < chromosome[i].size(); j++) {
+                chromosome[i].set(j,child[i].get(j));
+                // System.out.print(child[i].get(j)+" ");
+                // System.out.print(child[i].size());
+            }
+            // System.out.println();
+        }
         this.generation++;
     }
 
@@ -93,7 +104,7 @@ class Population implements FitnessFunction, RouletteWheel{
         //hitung total probabilitas
         double totalProbability = totalProbability(arrProbability);
 
-        System.out.println("total prob: " + totalProbability);
+        // System.out.println("total prob: " + totalProbability);
 
         //membuat pool untuk memilih parent
         LinkedList<Integer>[] roulettePool = new LinkedList[(int)totalProbability];
@@ -123,7 +134,7 @@ class Population implements FitnessFunction, RouletteWheel{
     }
 
     public void mutate(LinkedList<Integer> anak){
-        int max = 19;
+        int max = 24;
         int min = 0;
         int range = max-min+1;
         int rand = (int)(Math.random() * range) + min;
@@ -152,8 +163,8 @@ class Population implements FitnessFunction, RouletteWheel{
             strP1 += parent1.get(i);
             strP2 += parent2.get(i);
         }
-        strChild += strP1.substring(0,10);
-        strChild += strP2.substring(10,20);
+        strChild += strP1.substring(0,12);
+        strChild += strP2.substring(12,25);
 
         for (int i = 0; i < strChild.length(); i++) {
             child.addLast((int)strChild.charAt(i));
@@ -177,7 +188,7 @@ class Population implements FitnessFunction, RouletteWheel{
                 arrProbability[i] = Math.floor(arrProbability[i]);
             }
             totalProb += arrProbability[i];
-            System.out.println("probabilitas: " + arrProbability[i]);
+            // System.out.println("probabilitas: " + arrProbability[i]);
         }
         return arrProbability;
     }
