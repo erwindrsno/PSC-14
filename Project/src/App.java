@@ -3,6 +3,14 @@ import java.io.FileNotFoundException;
 import java.util.LinkedList;
 import java.util.Scanner;
 
+/*
+ * Referensi:
+ *  - https://www.baeldung.com/java-genetic-algorithm#:~:text=Genetic%20algorithms%20are%20designed%20to,simplest%20binary%20genetic%20algorithm%20example.
+ *  - https://www.youtube.com/watch?v=-jv3CgDN9sc&t=520s
+ *  - Dokumentasi java
+ *  - https://www.geeksforgeeks.org/linkedlist-set-method-in-java/
+ */
+
 public class App{
     public static void main(String[] args) throws FileNotFoundException{
         //Program menerima input dari file
@@ -59,33 +67,41 @@ public class App{
     }
 
     public static void initializePopulation(int populationSize, int boardSize, int[] target, LinkedList<Integer> llTarget){
+        //generate populasi awal, kalkulasi fitness-nya dan pemilihan parents dengan cara roulette wheel berdasarkan score fitness functionnya.
         Population population = new Population(populationSize, (int)Math.pow(boardSize,2), target);
         population.generateInitialPopulation();
         population.calculateFitness();
         // population.printInfo();
         population.selectParents();
+
+        //selama tidak menemukan global maksimum, akan selalu generate generasi yang baru.
         while(true){
             population.calculateFitness();
             population.selectParents();
             population.generateNewPopulation();
             boolean identical = false;
+            //iterasi setiap kromosom
             for (int index = 0; index < populationSize; index++) {
                 boolean valid = true;
+                //iterasi setiap gen dalam kromosom
                 for (int i = 0; i < target.length; i++) {
+                    //jika pada gen ke-index terdapat perbedaan dengan target, maka looping akan break dan iterasi ke kromosom selanjutnya
                     if(!population.chromosome[index].get(i).equals(llTarget.get(i))){
                         valid = false;
                         break;
                     }
                 }
                 System.out.println("Generation ke : " + population.generation);
+                //jika global maksimum berhasil ditemukan
                 if(valid == true){
-                    System.out.println("Generation ke : " + population.generation);
                     identical = true;
                     break;
                 }
             }
+            //jika global maksimum berhasil ditemukan, maka looping akan break
             if(identical == true){
                 System.out.println("Generation yang dibutuhkan untuk menemukan solusi: " + population.generation);
+                System.out.println();
                 break;
             }
         }

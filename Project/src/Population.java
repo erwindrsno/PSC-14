@@ -79,14 +79,16 @@ class Population implements FitnessFunction, RouletteWheel{
     @Override
     public void calculateFitness() {
         // TODO Auto-generated method stub
+        //menghitung fitness function
         for (int i = 0; i < populationSize; i++) {
             int score = 0;
+            //jika pada gen ke-j terdapat nilai yang sama dengan target, maka score fitness function bertambah 1
             for (int j = 0; j < chromosome[i].size(); j++) {
                 if(chromosome[i].get(j) == target[j]){
                     score++;
                 }
             }
-            // System.out.println(score/(double)chromosome[i].size()*1.0);
+            //konversi score ke dalam bentuk persen
             arrScore[i] = (score/(double)chromosome[i].size()*1.0)*100.0;
         }
     }
@@ -109,6 +111,9 @@ class Population implements FitnessFunction, RouletteWheel{
         //membuat pool untuk memilih parent
         LinkedList<Integer>[] roulettePool = new LinkedList[(int)totalProbability];
 
+        //konsep pembuatan roulette pool adalah sebagai berikut:
+        //misal parent a probabilitas 40%, b 30%, c 30%
+        //maka pool nya menjadi [a,a,a,a,b,b,b,c,c,c]
         int index = 0;
         int penanda = 0;
         for (int i = 0; i < roulettePool.length; i++) {
@@ -133,11 +138,14 @@ class Population implements FitnessFunction, RouletteWheel{
         }
     }
 
+    //mutasi salah satu index secara random
     public void mutate(LinkedList<Integer> anak){
+        //generate angka random dari 0-24
         int max = 24;
         int min = 0;
         int range = max-min+1;
         int rand = (int)(Math.random() * range) + min;
+        //mutasi salah satu index berdasarkan rand
         if(anak.get(rand) == 0){
             anak.remove(rand);
             anak.add(rand,1);
@@ -148,27 +156,36 @@ class Population implements FitnessFunction, RouletteWheel{
         }
     }
 
+    //crossover
     public LinkedList<Integer> crossOver(){
+        //generate angka random dari 0 - 19
         int max = 19;
         int min = 0;
         int range = max-min+1;
         int rand = (int)(Math.random() * range) + min;
+
+        //instansiasi parent 1 dan 2
         LinkedList<Integer> parent1 = chromosome[rand];
         LinkedList<Integer> parent2 = chromosome[rand];
         LinkedList<Integer> child = new LinkedList<>();
+        //instansiasi string untuk keperluan encode
         String strChild = "";
         String strP1 = "";
         String strP2 = "";
+        //encode linkedlist ke dalam bentuk string, agar mempermudahkan crossover dengan cara substring
         for (int i = 0; i < parent1.size(); i++) {
             strP1 += parent1.get(i);
             strP2 += parent2.get(i);
         }
+        //terjadinya crossover
         strChild += strP1.substring(0,12);
         strChild += strP2.substring(12,25);
 
+        //tambahkan hasil encoding ke dalam linkedlist kembali
         for (int i = 0; i < strChild.length(); i++) {
             child.addLast((int)strChild.charAt(i));
         }
+        //mutasi anak
         mutate(child);
         return child;
     }
