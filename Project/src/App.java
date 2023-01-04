@@ -91,20 +91,19 @@ public class App{
                         break;
                     }
                 }
-                System.out.println("Generation ke : " + population.generation);
                 //jika global maksimum berhasil ditemukan
                 if(valid == true){
                     identical = true;
                     break;
                 }
             }
+            // System.out.println("Generation ke : " + population.generation);
             //jika global maksimum berhasil ditemukan, maka looping akan break
             if(identical == true){
                 System.out.println("Generation yang dibutuhkan untuk menemukan solusi: " + population.generation);
                 System.out.println();
                 break;
             }
-        }
     }
 
     public static void printBoard(String[][] minesweeperBoard){

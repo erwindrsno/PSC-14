@@ -183,7 +183,7 @@ class Population implements FitnessFunction, RouletteWheel{
 
         //tambahkan hasil encoding ke dalam linkedlist kembali
         for (int i = 0; i < strChild.length(); i++) {
-            child.addLast((int)strChild.charAt(i));
+            child.addLast(Integer.parseInt(String.valueOf(strChild.charAt(0))));
         }
         //mutasi anak
         mutate(child);
