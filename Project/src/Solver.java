@@ -36,6 +36,7 @@ class Solver{
         return chromosomeSolution;
     }
 
+    //untuk memeriksa jika terdapat kotak yang belum diperiksa, maka akan return false
     public boolean checkAll(){
         boolean valid = true;
         for (int i = 1; i < board.length-1; i++) {
@@ -49,6 +50,7 @@ class Solver{
         return valid;
     }
 
+    //method untuk menyelesaikan puzzle
     public void solve(){
         for (int i = 1; i < board.length-1; i++) {
             for (int j = 1; j < board.length-1; j++) {
@@ -226,6 +228,7 @@ class Solver{
         }
     }
 
+    //assign board solution berdasarkan minesweeper check
     public void assign(){
         for (int i = 1; i < check.length-1; i++) {
             for (int j = 1; j < check.length-1; j++) {
